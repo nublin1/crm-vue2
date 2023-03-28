@@ -67,7 +67,8 @@ export default {
     },
 
     deleteContact(newContacts) {
-      this.client.contacts = (newContacts);
+      console.log(newContacts);
+      this.contacts = (newContacts);
     },
 
     addNewClientInfo() {

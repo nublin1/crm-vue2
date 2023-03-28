@@ -15,7 +15,7 @@
           class="contact-form-input" v-maska data-maska="+7 (###) ###-##-##">
         <input v-if="contact.type === 'Email'" v-model="contact.value" type="email" placeholder="Введите email "
           class="contact-form-input">
-        <button class="btn-deletecontact" @click.prevent="deleteContact(index)"></button>
+        <button class="btn-deletecontact" @click="deleteContact(index)"></button>
       </li>
     </ul>
     <div class="addcontact-space">
@@ -49,14 +49,13 @@ export default {
         type: 'Другое',
         value: '',
       };
-      const updatedContacts = [...this.contacts, newContact];
+      const updatedContacts = this.contacts;
+      updatedContacts.push(newContact);
       this.$emit('add-contact', updatedContacts);
     },
     deleteContact(index) {
-      let updatedContacts = [...this.contacts];
-
+      let updatedContacts = this.contacts;
       updatedContacts.splice(index, 1);
-
       this.$emit('delete-contact', updatedContacts);
     }
   },

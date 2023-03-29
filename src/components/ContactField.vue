@@ -1,9 +1,9 @@
 <template>
   <div class="contacts-space">
     <ul class="list-reset contact-list">
-      <li v-for="(contact, index) in contacts" :key="index + contact" class="contact-element">
-        <select class="btn-dropdown-button-content" v-model="selectedOption[index]" name="contacts"
-          @change="selectItem(contact, index)">
+      <li v-for="(contact, index) in contacts" :key="index" class="contact-element">
+        <select class="btn-dropdown-button-content" v-model="contact.type" name="contacts"
+          @change="selectItem(contact, $event)">
           <option class="btn-dropdown-contact-item" v-for="(contactType, index) in items" :key="index">
             {{ contactType }}
           </option>
@@ -34,15 +34,15 @@ import { vMaska } from "maska"
 export default {
   props: ['contacts'],
   data() {
-    return {
-      selectedOption: [],
+    return {      
       items: ['Телефон', 'Email', 'Facebook', 'VK', 'Другое'],
     }
   },
   directives: { maska: vMaska },
   methods: {
-    selectItem(contact, index) {
-      contact.type = this.selectedOption[index];
+    selectItem(contact, event) {
+      contact.type =  event.target.value;
+      contact.value = "";
     },
     addNewContact() {
       const newContact = {
@@ -57,7 +57,7 @@ export default {
       let updatedContacts = this.contacts;
       updatedContacts.splice(index, 1);
       this.$emit('delete-contact', updatedContacts);
-    }
+    },    
   },
   computed: {
 

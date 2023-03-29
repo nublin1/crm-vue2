@@ -1,5 +1,5 @@
 <template>
-  <div class="contacts-space">
+  <span class="span-fill">
     <ul class="list-reset contact-list">
       <li v-for="(contact, index) in contacts" :key="index" class="contact-element">
         <select class="btn-dropdown-button-content" v-model="contact.type" name="contacts"
@@ -15,17 +15,17 @@
           class="contact-form-input" v-maska data-maska="+7 (###) ###-##-##">
         <input v-if="contact.type === 'Email'" v-model="contact.value" type="email" placeholder="Введите email "
           class="contact-form-input">
-        <button class="btn-deletecontact" @click="deleteContact(index)"></button>
+        <button class="btn-deletecontact" @click="deleteContact(index)" v-tooltip="{ content: 'Удалить контакт' }"></button>
       </li>
     </ul>
-    <div class="addcontact-space">
+    <div class="addcontact-space" v-if="contactsSize < 10">
       <span class="contact-add">
       </span>
       <button class="btn-addcontact" @click.prevent="addNewContact">
         Добавить контакт
       </button>
     </div>
-  </div>
+  </span>
 </template>
 
 <script>
@@ -60,8 +60,16 @@ export default {
     },    
   },
   computed: {
-
+    contactsSize() {
+      return this.contacts.length;
+    }
   }
 }
 </script>
+
+<style>
+.span-fill {
+  width: 100%;
+}
+</style>
 

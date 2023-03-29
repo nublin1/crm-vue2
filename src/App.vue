@@ -4,7 +4,8 @@
       <div class="container-header">
         <div class="row-header">
           <picture class="header-logo">
-            <source srcset="/img/logo.png" />
+            <source srcset="/img/logo-320.png" media="(max-width: 320px)">
+            <source srcset="/img/logo.png" />            
             <img src="/img/logo.png" alt="Logo">
           </picture>
           <form class="filter-form" action="/search" method="get">

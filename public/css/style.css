@@ -639,13 +639,12 @@ td {
   align-items: center;
 }
 
-.modal-header--delete{
-  padding-left: 150px;
-}
+
 
 .modal_content-title {
+  margin: auto 0;
+  margin-left: auto;
   margin-right: auto;
-
   font-size: 18px;
   line-height: 25px;
   color: #333333

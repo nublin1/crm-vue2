@@ -1,7 +1,7 @@
 @media (max-width: 768px) {
   .container {
     max-width: 768px;
-  }
+  } 
 
   td {
     padding: 10px 0;
@@ -23,6 +23,18 @@
   .table-data-buttons {
     flex-direction: column;
     min-width: 110px;
+  }
+}
+
+@media (max-width: 699px) {
+  table {
+    display: block;
+    overflow-x: auto;
+    white-space: nowrap;
+  }
+
+  .search-form {
+    width: 100%;
   }
 }
 
@@ -78,10 +90,6 @@
     padding: 10px 5px;
     max-width: 130px;
   }
-
-  .modal-header--delete {
-    padding-left: 60px;
-}
 
   .modal-content-delete {
     padding: 0 10px;

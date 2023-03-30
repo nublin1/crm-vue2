@@ -1,23 +1,24 @@
 <template>
-  <body class="body">
-    <header class="header">
-      <div class="container-header">
-        <div class="row-header">
-          <picture class="header-logo">
-            <source srcset="/img/logo-320.png" media="(max-width: 320px)">
-            <source srcset="/img/logo.png" />            
-            <img src="/img/logo.png" alt="Logo">
-          </picture>
-          <form class="filter-form" action="/search" method="get">
-            <input class="search-form" type="text" name="search" placeholder="Введите запрос" v-model="searchValue"  @input="search(searchValue)">
-          </form>
-
+  <div id="app">
+    <body class="body">
+      <header class="header">
+        <div class="container-header">
+          <div class="row-header">
+            <picture class="header-logo">
+              <source srcset="/img/logo-320.png" media="(max-width: 320px)">
+              <source srcset="/img/logo.png" />
+              <img src="/img/logo.png" alt="Logo">
+            </picture>
+            <form class="filter-form" action="/search" method="get">
+              <input class="search-form" type="text" name="search" placeholder="Введите запрос" v-model="searchValue"
+                @input="search(searchValue)">
+            </form>
+          </div>
         </div>
-      </div>
-
-    </header>
-    <router-view />
-  </body>
+      </header>
+      <router-view />
+    </body>
+  </div>
 </template>
 
 <script>
@@ -37,7 +38,7 @@ export default {
     ...mapActions([
       'loadClients',
     ]),
-    search(value) {     
+    search(value) {
       this.loadClients(value);
     }
   },
